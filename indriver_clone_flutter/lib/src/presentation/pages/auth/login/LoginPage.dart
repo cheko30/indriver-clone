@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:indriver_clone_flutter/src/presentation/pages/auth/login/LoginContent.dart';
+import 'package:indriver_clone_flutter/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
+import 'package:indriver_clone_flutter/src/presentation/pages/auth/login/bloc/LoginState.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,9 +14,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      //backgroundColor: Color.fromARGB(255, 24, 181, 254),
-      body:  LoginContent()
-    );
+    return Scaffold(
+        //backgroundColor: Color.fromARGB(255, 24, 181, 254),
+        body: BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return LoginContent(state);
+      },
+    ));
   }
 }

@@ -18,8 +18,8 @@ class RegisterContent extends StatelessWidget {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: const [
-                Color.fromARGB(255,12,38,145),
-                Color.fromARGB(255,34,156,249),
+                Color.fromARGB(255, 12, 38, 145),
+                Color.fromARGB(255, 34, 156, 249),
               ],
             ),
           ),
@@ -28,7 +28,9 @@ class RegisterContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _textLoginRotated(context),
-              SizedBox(height: 100,),
+              SizedBox(
+                height: 100,
+              ),
               _textRegisterRotated(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.25),
             ],
@@ -38,17 +40,14 @@ class RegisterContent extends StatelessWidget {
           margin: EdgeInsets.only(left: 60, bottom: 35),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(35),
-              bottomLeft: Radius.circular(35)
-            ),
+                topLeft: Radius.circular(35), bottomLeft: Radius.circular(35)),
             gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: const [
-                Color.fromARGB(255, 255, 255, 255),
-                Color.fromARGB(255, 154, 154, 154),
-              ]
-            ),
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: const [
+                  Color.fromARGB(255, 14, 29, 166),
+                  Color.fromARGB(255, 30, 112, 227),
+                ]),
           ),
           child: Stack(
             children: [
@@ -89,6 +88,7 @@ class RegisterContent extends StatelessWidget {
                     ),
                     DefaultButton(
                       text: 'Crear usuario',
+                      onPressed: () {},
                       margin: EdgeInsets.only(top: 10, left: 20, right: 20),
                     ),
                     SizedBox(height: 10),
@@ -113,7 +113,7 @@ class RegisterContent extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.6,
         height: MediaQuery.of(context).size.height * 0.6,
         opacity: AlwaysStoppedAnimation(0.1),
-      ),      
+      ),
     );
   }
 
@@ -123,12 +123,11 @@ class RegisterContent extends StatelessWidget {
       children: [
         Text(
           '¿Ya tienes cuenta?',
-          style: TextStyle(
-            color: Colors.grey[100],
-            fontSize: 16
-          ),
+          style: TextStyle(color: Colors.grey[100], fontSize: 16),
         ),
-        SizedBox(width: 5,),
+        SizedBox(
+          width: 5,
+        ),
         GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, "login");
@@ -136,10 +135,7 @@ class RegisterContent extends StatelessWidget {
           child: Text(
             "Inicia sesion",
             style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16
-            ),
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           ),
         )
       ],
@@ -158,10 +154,7 @@ class RegisterContent extends StatelessWidget {
         ),
         Text(
           "O",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 17
-          ),
+          style: TextStyle(color: Colors.white, fontSize: 17),
         ),
         Container(
           width: 25,
@@ -183,7 +176,6 @@ class RegisterContent extends StatelessWidget {
         width: 130,
       ),
     );
-
   }
 
   Widget _textRegisterRotated() {
@@ -192,10 +184,7 @@ class RegisterContent extends StatelessWidget {
       child: Text(
         'Registro',
         style: TextStyle(
-          fontSize: 27,
-          color: Colors.white,
-          fontWeight: FontWeight.bold
-        ),
+            fontSize: 27, color: Colors.white, fontWeight: FontWeight.bold),
       ),
     );
   }
