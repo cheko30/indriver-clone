@@ -30,7 +30,7 @@ class LoginContent extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              _textRegisterRotated(),
+              _textRegisterRotated(context),
               SizedBox(
                 height: 90,
               ),
@@ -75,7 +75,7 @@ class LoginContent extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                _textDontHaveAccount(),
+                _textDontHaveAccount(context),
                 SizedBox(
                   height: 50,
                 )
@@ -87,23 +87,28 @@ class LoginContent extends StatelessWidget {
     );
   }
 
-  Widget _textDontHaveAccount() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'No tienes cuenta?',
-          style: TextStyle(color: Colors.grey[100], fontSize: 17),
-        ),
-        SizedBox(
-          width: 7,
-        ),
-        Text(
-          'registrate',
-          style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17),
-        ),
-      ],
+  Widget _textDontHaveAccount(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'register');
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'No tienes cuenta?',
+            style: TextStyle(color: Colors.grey[100], fontSize: 17),
+          ),
+          SizedBox(
+            width: 7,
+          ),
+          Text(
+            'registrate',
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17),
+          ),
+        ],
+      ),
     );
   }
 
@@ -169,14 +174,19 @@ class LoginContent extends StatelessWidget {
     );
   }
 
-  Widget _textRegisterRotated() {
-    return RotatedBox(
-      quarterTurns: 1,
-      child: Text(
-        'Registro',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 23,
+  Widget _textRegisterRotated(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'register');
+      },
+      child: RotatedBox(
+        quarterTurns: 1,
+        child: Text(
+          'Registro',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 23,
+          ),
         ),
       ),
     );
