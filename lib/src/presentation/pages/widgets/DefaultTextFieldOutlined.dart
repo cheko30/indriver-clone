@@ -16,14 +16,13 @@ class DefaulttextfieldOutlined extends StatelessWidget {
     return Container(
       height: 45,
       margin: margin,
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 0.2),
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
+      decoration: BoxDecoration(),
       child: TextFormField(
         decoration: InputDecoration(
-            label: Text(text),
-            //border: InputBorder.none,
+            label: Text(
+              text,
+              style: TextStyle(color: Colors.white),
+            ),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                     color: Color.fromARGB(255, 35, 161, 183), width: 2)),
@@ -33,11 +32,14 @@ class DefaulttextfieldOutlined extends StatelessWidget {
             prefixIcon: Container(
               margin: EdgeInsets.only(top: 10),
               child: Wrap(alignment: WrapAlignment.spaceEvenly, children: [
-                Icon(icon),
+                Icon(
+                  icon,
+                  color: Colors.white,
+                ),
                 Container(
                   height: 20,
                   width: 1,
-                  color: Colors.grey,
+                  color: Colors.white,
                 )
               ]),
             )),
