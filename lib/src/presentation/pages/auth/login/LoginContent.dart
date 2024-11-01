@@ -38,6 +38,7 @@ class LoginContent extends StatelessWidget {
           ),
         ),
         Container(
+          height: MediaQuery.of(context).size.height,
           margin: EdgeInsets.only(left: 60, bottom: 60),
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -53,33 +54,37 @@ class LoginContent extends StatelessWidget {
               )),
           child: Container(
             margin: EdgeInsets.only(left: 25, right: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 50,
-                ),
-                _textWelcome('Welcome'),
-                _textWelcome('back'),
-                _imageCar(),
-                _textLogin(),
-                Defaulttextfield(text: 'Email', icon: Icons.email_outlined),
-                Defaulttextfield(
-                  text: 'Password',
-                  icon: Icons.lock_outline,
-                  margin: EdgeInsets.only(top: 15, left: 20, right: 20),
-                ),
-                Spacer(),
-                Defaultbutton(text: 'Iniciar sesión'),
-                _separatorOr(),
-                SizedBox(
-                  height: 10,
-                ),
-                _textDontHaveAccount(context),
-                SizedBox(
-                  height: 50,
-                )
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 50,
+                  ),
+                  _textWelcome('Welcome'),
+                  _textWelcome('back'),
+                  _imageCar(),
+                  _textLogin(),
+                  Defaulttextfield(text: 'Email', icon: Icons.email_outlined),
+                  Defaulttextfield(
+                    text: 'Password',
+                    icon: Icons.lock_outline,
+                    margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.2,
+                  ),
+                  Defaultbutton(text: 'Iniciar sesión'),
+                  _separatorOr(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  _textDontHaveAccount(context),
+                  SizedBox(
+                    height: 50,
+                  )
+                ],
+              ),
             ),
           ),
         ),
