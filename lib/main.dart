@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:indrive_clone_flutter/blocProviders.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/LoginPage.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginBloc.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/RegisterPage.dart';
 
 void main() {
@@ -16,8 +15,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LoginBloc()..add(LoginInitEvent()),
+    return MultiBlocProvider(
+      providers: blocProviders,
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
