@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultButton.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultTextField.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultTextFieldOutlined.dart';
 
 class RegisterContent extends StatelessWidget {
@@ -45,8 +44,8 @@ class RegisterContent extends StatelessWidget {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: const [
-                    Color.fromARGB(255, 245, 245, 245),
-                    Color.fromARGB(255, 189, 189, 189),
+                    Color.fromARGB(255, 12, 38, 145),
+                    Color.fromARGB(255, 34, 156, 249),
                   ])),
           child: Stack(
             children: [
