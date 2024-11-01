@@ -4,18 +4,21 @@ class Defaultbutton extends StatelessWidget {
   String text;
   Color color;
   Color textColor;
+  EdgeInsetsGeometry margin;
+
   Defaultbutton(
       {super.key,
       required this.text,
       this.color = Colors.white,
-      this.textColor = Colors.black});
+      this.textColor = Colors.black,
+      this.margin = const EdgeInsets.only(bottom: 20, left: 40, right: 40)});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 45,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(bottom: 15, left: 20, right: 20),
+      margin: margin,
       child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(backgroundColor: color),
