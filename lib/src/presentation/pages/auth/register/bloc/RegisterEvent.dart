@@ -1,4 +1,4 @@
-import 'package:indrive_clone_flutter/src/presentation/pages/utils/BlocFormItem.dart';
+import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
 abstract class RegisterEvent {}
 

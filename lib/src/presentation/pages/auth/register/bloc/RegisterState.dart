@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/utils/BlocFormItem.dart';
+import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
 class RegisterState extends Equatable {
   final BlocFormItem name;

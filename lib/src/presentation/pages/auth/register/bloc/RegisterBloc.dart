@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterState.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/utils/BlocFormItem.dart';
+import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final formKey = GlobalKey<FormState>();

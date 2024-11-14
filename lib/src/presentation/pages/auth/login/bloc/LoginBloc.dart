@@ -4,7 +4,7 @@ import 'package:indrive_clone_flutter/src/data/dataSource/remote/services/AuthSe
 import 'package:indrive_clone_flutter/src/domain/utils/Resource.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginState.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/utils/BlocFormItem.dart';
+import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
 class LoginBloc extends Bloc<Loginevent, LoginState> {
   final formKey = GlobalKey<FormState>();

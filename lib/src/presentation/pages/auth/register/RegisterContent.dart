@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterState.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/utils/BlocFormItem.dart';
+import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultButton.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultTextFieldOutlined.dart';
 
