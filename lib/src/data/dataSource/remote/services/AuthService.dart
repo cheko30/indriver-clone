@@ -16,7 +16,7 @@ class AuthService {
       final response = await http.post(url, headers: headers, body: body);
       final data = json.decode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        AuthResponse authResponse = AuthResponse.fromJson(data);
+        AuthResponse authResponse = AuthResponse.fromMap(data);
         print('DATA REMOTE: ${authResponse.toJson()}');
         print('TOKEN: ${authResponse.token}');
         return Success(authResponse);

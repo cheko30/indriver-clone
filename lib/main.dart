@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:indrive_clone_flutter/blocProviders.dart';
+import 'package:indrive_clone_flutter/injection.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/LoginPage.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/RegisterPage.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   runApp(const MyApp());
 }
 
