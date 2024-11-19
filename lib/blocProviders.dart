@@ -11,5 +11,6 @@ List<BlocProvider> blocProviders = [
       create: (context) =>
           LoginBloc(locator<AuthUseCases>())..add(LoginInitEvent())),
   BlocProvider<RegisterBloc>(
-      create: (context) => RegisterBloc()..add(RegisterInitEvent())),
+      create: (context) =>
+          RegisterBloc(locator<AuthUseCases>())..add(RegisterInitEvent())),
 ];
