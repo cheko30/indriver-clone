@@ -9,6 +9,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:indrive_clone_flutter/src/data/dataSource/local/SharePref.dart'
+    as _i384;
 import 'package:indrive_clone_flutter/src/data/dataSource/remote/services/AuthService.dart'
     as _i924;
 import 'package:indrive_clone_flutter/src/di/AppModule.dart' as _i642;
@@ -30,6 +32,7 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final appModule = _$AppModule();
+    gh.factory<_i384.SharePref>(() => appModule.sharePref);
     gh.factory<_i924.AuthService>(() => appModule.authService);
     gh.factory<_i515.AuthRepository>(() => appModule.authRepository);
     gh.factory<_i985.AuthUseCases>(() => appModule.authUseCases);

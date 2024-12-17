@@ -1,17 +1,23 @@
+import 'package:indrive_clone_flutter/src/domain/models/AuthResponse.dart';
 import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
-abstract class Loginevent {}
+abstract class LoginEvent {}
 
-class LoginInitEvent extends Loginevent {}
+class LoginInitEvent extends LoginEvent {}
 
-class EmailChanged extends Loginevent {
+class EmailChanged extends LoginEvent {
   final BlocFormItem email;
   EmailChanged({required this.email});
 }
 
-class PasswordChanged extends Loginevent {
+class PasswordChanged extends LoginEvent {
   final BlocFormItem password;
   PasswordChanged({required this.password});
 }
 
-class FormSubmit extends Loginevent {}
+class SaveUserSession extends LoginEvent {
+  final AuthResponse authResponse;
+  SaveUserSession({required this.authResponse});
+}
+
+class FormSubmit extends LoginEvent {}

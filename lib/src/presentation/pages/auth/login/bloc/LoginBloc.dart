@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:indrive_clone_flutter/src/domain/models/AuthResponse.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/auth/AuthUseCases.dart';
 import 'package:indrive_clone_flutter/src/domain/utils/Resource.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginState.dart';
 import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
-class LoginBloc extends Bloc<Loginevent, LoginState> {
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
   AuthUseCases authUseCases;
   final formKey = GlobalKey<FormState>();
 
   LoginBloc(this.authUseCases) : super(LoginState()) {
-    on<LoginInitEvent>((event, emit) {
+    on<LoginInitEvent>((event, emit) async {
+      AuthResponse? authResponse = await authUseCases.getUserSession.run();
+      print('Auth Response Session ${authResponse?.toJson()}');
       emit(state.copyWith(formKey: formKey));
     });
 
@@ -21,6 +24,10 @@ class LoginBloc extends Bloc<Loginevent, LoginState> {
               value: event.email.value,
               error: event.email.value.isEmpty ? "Ingresa el email" : null),
           formKey: formKey));
+    });
+
+    on<SaveUserSession>((event, emit) async {
+      await authUseCases.saveUserSession.run(event.authResponse);
     });
 
     on<PasswordChanged>((event, emit) {

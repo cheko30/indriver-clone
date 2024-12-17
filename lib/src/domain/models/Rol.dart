@@ -17,11 +17,11 @@ class Role {
     required this.updatedAt,
   });
 
-  factory Role.fromJson(String str) => Role.fromMap(json.decode(str));
+  //factory Role.fromJson(String str) => Role.fromMap(json.decode(str));
 
-  String toJson() => json.encode(toMap());
+  //String toJson() => json.encode(toMap());
 
-  factory Role.fromMap(Map<String, dynamic> json) => Role(
+  factory Role.fromJson(Map<String, dynamic> json) => Role(
         id: json["id"],
         name: json["name"],
         image: json["image"],
@@ -30,7 +30,7 @@ class Role {
         updatedAt: DateTime.parse(json["updated_at"]),
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "image": image,
