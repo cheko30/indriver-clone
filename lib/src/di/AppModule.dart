@@ -5,6 +5,7 @@ import 'package:indrive_clone_flutter/src/domain/repository/AuthRepository.dart'
 import 'package:indrive_clone_flutter/src/domain/useCases/auth/AuthUseCases.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/auth/GetUserSessionUseCase.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/auth/LoginUseCase.dart';
+import 'package:indrive_clone_flutter/src/domain/useCases/auth/LogoutUseCase.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/auth/RegisterUseCase.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/auth/SaveUserSessionUseCase.dart';
 import 'package:injectable/injectable.dart';
@@ -27,5 +28,6 @@ abstract class AppModule {
         register: RegisterUseCase(authRepository),
         saveUserSession: SaveUserSessionUseCase(authRepository),
         getUserSession: GetUserSessionUseCase(authRepository),
+        logout: LogoutUseCase(authRepository),
       );
 }
