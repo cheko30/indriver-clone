@@ -5,6 +5,7 @@ import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/Log
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
 
 List<BlocProvider> blocProviders = [
   BlocProvider<LoginBloc>(
@@ -13,4 +14,5 @@ List<BlocProvider> blocProviders = [
   BlocProvider<RegisterBloc>(
       create: (context) =>
           RegisterBloc(locator<AuthUseCases>())..add(RegisterInitEvent())),
+  BlocProvider<ClientHomeBloc>(create: (context) => ClientHomeBloc()),
 ];
