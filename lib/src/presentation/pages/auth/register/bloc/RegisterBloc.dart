@@ -15,6 +15,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       emit(state.copyWith(formKey: formKey));
     });
 
+    on<SaveUserSession>((event, emit) async {
+      await authUseCases.saveUserSession.run(event.authResponse);
+    });
+
     on<NameChanged>((event, emit) {
       emit(state.copyWith(
           name: BlocFormItem(

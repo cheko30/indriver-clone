@@ -1,5 +1,7 @@
 import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
+import '../../../../../domain/models/AuthResponse.dart';
+
 abstract class RegisterEvent {}
 
 class RegisterInitEvent extends RegisterEvent {}
@@ -32,6 +34,11 @@ class PasswordChanged extends RegisterInitEvent {
 class ConfirmPasswordChanged extends RegisterInitEvent {
   final BlocFormItem confirmPassword;
   ConfirmPasswordChanged({required this.confirmPassword});
+}
+
+class SaveUserSession extends RegisterInitEvent {
+  final AuthResponse authResponse;
+  SaveUserSession({required this.authResponse});
 }
 
 class FormSubmit extends RegisterInitEvent {}
