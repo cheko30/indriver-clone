@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class DefaultTextField extends StatelessWidget {
   String text;
+  String? initialValue;
   Function(String text) onChanged;
   IconData icon;
   EdgeInsetsGeometry margin;
   String? Function(String?)? validator;
+  Color backgroundColor;
 
   DefaultTextField(
       {super.key,
@@ -13,21 +15,24 @@ class DefaultTextField extends StatelessWidget {
       required this.icon,
       required this.onChanged,
       this.margin = const EdgeInsets.only(top: 50, left: 20, right: 20),
-      this.validator});
+      this.validator,
+      this.backgroundColor = Colors.white,
+      this.initialValue});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
+      height: 45,
       margin: margin,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: backgroundColor,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
       child: TextFormField(
         onChanged: (text) {
           onChanged(text);
         },
+        initialValue: initialValue,
         validator: validator,
         decoration: InputDecoration(
             label: Text(text),

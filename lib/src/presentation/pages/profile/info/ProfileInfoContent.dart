@@ -13,8 +13,10 @@ class ProfileInfoContent extends StatelessWidget {
           children: [
             _headerProfile(context),
             Spacer(),
-            _actionProfile('Editar Perfil', Icons.edit),
-            _actionProfile('Cerrar Sesión', Icons.settings_power),
+            _actionProfile('Editar Perfil', Icons.edit, () {
+              Navigator.pushNamed(context, 'profile/update', arguments: user);
+            }),
+            _actionProfile('Cerrar Sesión', Icons.settings_power, () {}),
             SizedBox(
               height: 35,
             )
@@ -69,29 +71,34 @@ class ProfileInfoContent extends StatelessWidget {
     );
   }
 
-  Widget _actionProfile(String option, IconData icon) {
-    return Container(
-      margin: EdgeInsets.only(left: 20, right: 20, top: 15),
-      child: ListTile(
-        title: Text(
-          option,
-          style: TextStyle(fontWeight: FontWeight.bold),
+  Widget _actionProfile(String option, IconData icon, Function() function) {
+    return GestureDetector(
+      onTap: () {
+        function();
+      },
+      child: Container(
+        margin: EdgeInsets.only(left: 20, right: 20, top: 15),
+        child: ListTile(
+          title: Text(
+            option,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          leading: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: const [
+                        Color.fromARGB(255, 14, 29, 106),
+                        Color.fromARGB(255, 30, 112, 227)
+                      ]),
+                  borderRadius: BorderRadius.all(Radius.circular(50))),
+              child: Icon(
+                icon,
+                color: Colors.white,
+              )),
         ),
-        leading: Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: const [
-                      Color.fromARGB(255, 14, 29, 106),
-                      Color.fromARGB(255, 30, 112, 227)
-                    ]),
-                borderRadius: BorderRadius.all(Radius.circular(50))),
-            child: Icon(
-              icon,
-              color: Colors.white,
-            )),
       ),
     );
   }

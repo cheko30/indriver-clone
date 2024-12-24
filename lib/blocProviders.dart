@@ -8,6 +8,7 @@ import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/
 import 'package:indrive_clone_flutter/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/bloc/ProfileInfoBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/bloc/ProfileInfoEvent.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/profile/update/bloc/ProfileUpdateBloc.dart';
 
 List<BlocProvider> blocProviders = [
   BlocProvider<LoginBloc>(
@@ -21,4 +22,5 @@ List<BlocProvider> blocProviders = [
   BlocProvider<ProfileInfoBloc>(
       create: (context) =>
           ProfileInfoBloc(locator<AuthUseCases>())..add(GetUserInfo())),
+  BlocProvider<ProfileUpdateBloc>(create: (context) => ProfileUpdateBloc()),
 ];

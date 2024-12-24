@@ -1,3 +1,3 @@
 class ApiConfig {
-  static const String API_URL = '192.168.56.1:3000';
+  static const String API_URL = '192.168.0.3:3000';
 }
