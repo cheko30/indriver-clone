@@ -22,7 +22,7 @@ class DefaultTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45,
+      height: 50,
       margin: margin,
       decoration: BoxDecoration(
           color: backgroundColor,
@@ -32,10 +32,14 @@ class DefaultTextField extends StatelessWidget {
         onChanged: (text) {
           onChanged(text);
         },
+        style: TextStyle(fontSize: 13),
         initialValue: initialValue,
         validator: validator,
         decoration: InputDecoration(
-            label: Text(text),
+            label: Text(
+              text,
+              style: TextStyle(fontSize: 13),
+            ),
             border: InputBorder.none,
             prefixIcon: Container(
               margin: EdgeInsets.only(top: 10),

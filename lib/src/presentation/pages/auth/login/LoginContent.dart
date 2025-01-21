@@ -4,8 +4,8 @@ import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/Log
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/LoginState.dart';
 import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultButton.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultTextField.dart';
+import 'package:indrive_clone_flutter/src/presentation/widgets/DefaultButton.dart';
+import 'package:indrive_clone_flutter/src/presentation/widgets/DefaultTextField.dart';
 
 class LoginContent extends StatelessWidget {
   LoginState state;

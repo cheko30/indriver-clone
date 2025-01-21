@@ -4,8 +4,8 @@ import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterState.dart';
 import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultButton.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultTextFieldOutlined.dart';
+import 'package:indrive_clone_flutter/src/presentation/widgets/DefaultButton.dart';
+import 'package:indrive_clone_flutter/src/presentation/widgets/DefaultTextFieldOutlined.dart';
 
 class RegisterContent extends StatelessWidget {
   RegisterState state;

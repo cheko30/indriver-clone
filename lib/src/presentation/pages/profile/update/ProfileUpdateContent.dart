@@ -4,8 +4,9 @@ import 'package:indrive_clone_flutter/src/domain/models/user.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/update/bloc/ProfileUpdateBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/update/bloc/ProfileUpdateEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/update/bloc/ProfileUpdateState.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultIconBack.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/widgets/DefaultTextField.dart';
+import 'package:indrive_clone_flutter/src/presentation/utils/GalleryOrPhotoDialog.dart';
+import 'package:indrive_clone_flutter/src/presentation/widgets/DefaultIconBack.dart';
+import 'package:indrive_clone_flutter/src/presentation/widgets/DefaultTextField.dart';
 import 'package:indrive_clone_flutter/src/presentation/utils/BlocFormItem.dart';
 
 class ProfileUpdateContent extends StatelessWidget {
@@ -15,23 +16,26 @@ class ProfileUpdateContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            _headerProfile(context),
-            Spacer(),
-            _actionProfile(context, 'Actualizar Usuario', Icons.check),
-            SizedBox(
-              height: 35,
-            )
-          ],
-        ),
-        _cardUserInfo(context),
-        DefaultIconBack(
-          margin: EdgeInsets.only(top: 60, left: 30),
-        )
-      ],
+    return Form(
+      key: state.formKey,
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              _headerProfile(context),
+              Spacer(),
+              _actionProfile(context, 'Actualizar Usuario', Icons.check),
+              SizedBox(
+                height: 35,
+              )
+            ],
+          ),
+          _cardUserInfo(context),
+          DefaultIconBack(
+            margin: EdgeInsets.only(top: 60, left: 30),
+          )
+        ],
+      ),
     );
   }
 
@@ -45,22 +49,7 @@ class ProfileUpdateContent extends StatelessWidget {
         surfaceTintColor: Colors.white,
         child: Column(
           children: [
-            Container(
-              width: 115,
-              margin: EdgeInsets.only(top: 15, bottom: 15),
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: ClipOval(
-                  child: FadeInImage.assetNetwork(
-                    placeholder: 'assets/img/user_image.png',
-                    image:
-                        'https://img.freepik.com/photos-gratuite/portrait-homme-affaires-joyeux-dans-lunettes-rendu-3d_1142-51566.jpg',
-                    fit: BoxFit.cover,
-                    fadeInDuration: Duration(seconds: 1),
-                  ),
-                ),
-              ),
-            ),
+            _imageUser(context),
             DefaultTextField(
               text: 'Nombre',
               icon: Icons.person,
@@ -107,6 +96,35 @@ class ProfileUpdateContent extends StatelessWidget {
               },
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _imageUser(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        GalleryOrPhotoDialog(
+            context,
+            () => {context.read<ProfileUpdateBloc>().add(PickImage())},
+            () => {context.read<ProfileUpdateBloc>().add(TakePhoto())});
+      },
+      child: Container(
+        width: 115,
+        margin: EdgeInsets.only(top: 15, bottom: 15),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: ClipOval(
+            child: state.image != null
+                ? Image.file(state.image!, fit: BoxFit.cover)
+                : FadeInImage.assetNetwork(
+                    placeholder: 'assets/img/user_image.png',
+                    image:
+                        'https://img.freepik.com/photos-gratuite/portrait-homme-affaires-joyeux-dans-lunettes-rendu-3d_1142-51566.jpg',
+                    fit: BoxFit.cover,
+                    fadeInDuration: Duration(seconds: 1),
+                  ),
+          ),
         ),
       ),
     );

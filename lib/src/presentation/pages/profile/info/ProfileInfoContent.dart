@@ -43,13 +43,14 @@ class ProfileInfoContent extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: ClipOval(
-                  child: FadeInImage.assetNetwork(
-                    placeholder: 'assets/img/user_image.png',
-                    image:
-                        'https://img.freepik.com/photos-gratuite/portrait-homme-affaires-joyeux-dans-lunettes-rendu-3d_1142-51566.jpg',
-                    fit: BoxFit.cover,
-                    fadeInDuration: Duration(seconds: 1),
-                  ),
+                  child: user != null
+                      ? FadeInImage.assetNetwork(
+                          placeholder: 'assets/img/user_image.png',
+                          image: user!.image!,
+                          fit: BoxFit.cover,
+                          fadeInDuration: Duration(seconds: 1),
+                        )
+                      : Container(),
                 ),
               ),
             ),
