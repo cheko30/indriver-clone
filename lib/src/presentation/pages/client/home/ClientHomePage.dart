@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:indrive_clone_flutter/main.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/home/bloc/ClientHomeEvent.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/client/mapSeeker/ClientMapSeekerPage.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/ProfileInfoPage.dart';
 
 import 'bloc/ClientHomeBloc.dart';
@@ -15,7 +16,7 @@ class ClientHomePage extends StatefulWidget {
 }
 
 class _ClientHomePageState extends State<ClientHomePage> {
-  List<Widget> pageList = <Widget>[ProfileInfoPage()];
+  List<Widget> pageList = <Widget>[ClientMapSeekerPage(), ProfileInfoPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -49,12 +50,22 @@ class _ClientHomePageState extends State<ClientHomePage> {
                   ),
                 ),
                 ListTile(
-                  title: Text('Perfil del usuario'),
+                  title: Text('Mapa de busqueda'),
                   selected: state.pageIndex == 0,
                   onTap: () {
                     context
                         .read<ClientHomeBloc>()
                         .add(ChangeDrawerPage(pageIndex: 0));
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text('Perfil del usuario'),
+                  selected: state.pageIndex == 1,
+                  onTap: () {
+                    context
+                        .read<ClientHomeBloc>()
+                        .add(ChangeDrawerPage(pageIndex: 1));
                     Navigator.pop(context);
                   },
                 ),
