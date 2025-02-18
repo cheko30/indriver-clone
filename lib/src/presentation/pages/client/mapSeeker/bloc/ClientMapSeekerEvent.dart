@@ -19,3 +19,21 @@ class OnCameraMove extends ClientMapSeekerEvent {
 }
 
 class OnCamaraIdle extends ClientMapSeekerEvent {}
+
+class OnAutoCompletedPickUpSelected extends ClientMapSeekerEvent {
+  double lat;
+  double lng;
+  String pickUpDescription;
+  OnAutoCompletedPickUpSelected(
+      {required this.lat, required this.lng, required this.pickUpDescription});
+}
+
+class OnAutoCompletedDestinationSelected extends ClientMapSeekerEvent {
+  double lat;
+  double lng;
+  String destinationDescription;
+  OnAutoCompletedDestinationSelected(
+      {required this.lat,
+      required this.lng,
+      required this.destinationDescription});
+}

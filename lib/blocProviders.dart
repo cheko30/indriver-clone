@@ -8,6 +8,7 @@ import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/bloc/Log
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/RegisterEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/client/mapBookingInfo/bloc/ClientMapBookingInfoBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/mapSeeker/bloc/ClientMapSeekerBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/bloc/ProfileInfoBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/bloc/ProfileInfoEvent.dart';
@@ -30,4 +31,7 @@ List<BlocProvider> blocProviders = [
           ProfileUpdateBloc(locator<UsersUseCases>(), locator<AuthUseCases>())),
   BlocProvider<ClientMapSeekerBloc>(
       create: (context) => ClientMapSeekerBloc(locator<GeolocatorUseCases>())),
+  BlocProvider<ClientMapBookingInfoBloc>(
+      create: (context) =>
+          ClientMapBookingInfoBloc(locator<GeolocatorUseCases>())),
 ];

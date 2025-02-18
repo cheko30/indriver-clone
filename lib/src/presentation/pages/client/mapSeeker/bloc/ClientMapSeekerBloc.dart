@@ -59,5 +59,17 @@ class ClientMapSeekerBloc
 
       emit(state.copyWith(placemarkData: placemarkData));
     });
+
+    on<OnAutoCompletedPickUpSelected>((event, emit) {
+      emit(state.copyWith(
+          pickUpLatLng: LatLng(event.lat, event.lng),
+          pickUpDescription: event.pickUpDescription));
+    });
+
+    on<OnAutoCompletedDestinationSelected>((event, emit) {
+      emit(state.copyWith(
+          destinationLatLng: LatLng(event.lat, event.lng),
+          destinationDescription: event.destinationDescription));
+    });
   }
 }
