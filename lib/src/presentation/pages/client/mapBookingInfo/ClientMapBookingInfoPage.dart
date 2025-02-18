@@ -16,14 +16,26 @@ class ClientMapBookingInfoPage extends StatefulWidget {
 }
 
 class _ClientMapBookingInfoPageState extends State<ClientMapBookingInfoPage> {
+  LatLng? pickUpLatLng;
+  LatLng? destinationLatLng;
+  String? pickUpDescription;
+  String? destinationDescription;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timestamp) {
-      context
-          .read<ClientMapBookingInfoBloc>()
-          .add(ClientMapBookingInfoInitEvent());
+      context.read<ClientMapBookingInfoBloc>().add(
+          ClientMapBookingInfoInitEvent(
+              pickUpLatLng: pickUpLatLng!,
+              destinationLatLng: destinationLatLng!,
+              pickUpDescription: pickUpDescription!,
+              destinationDescription: destinationDescription!));
+
+      context.read<ClientMapBookingInfoBloc>().add(AddPolyline());
+      context.read<ClientMapBookingInfoBloc>().add(ChangeMapCameraPosition(
+          lat: pickUpLatLng!.latitude, lng: pickUpLatLng!.longitude));
     });
   }
 
@@ -32,10 +44,10 @@ class _ClientMapBookingInfoPageState extends State<ClientMapBookingInfoPage> {
     Map<String, dynamic> arguments =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
 
-    LatLng pickUpLatLng = arguments['pickUpLatLng'];
-    LatLng destinationLatLng = arguments['detinationLatLng'];
-    String pickUpDescription = arguments['pickUpDescription'];
-    String destinationDescription = arguments['destinationDescription'];
+    pickUpLatLng = arguments['pickUpLatLng'];
+    destinationLatLng = arguments['detinationLatLng'];
+    pickUpDescription = arguments['pickUpDescription'];
+    destinationDescription = arguments['destinationDescription'];
 
     return Scaffold(
       body: BlocBuilder<ClientMapBookingInfoBloc, ClientMapBookingInfoState>(

@@ -5,8 +5,10 @@ import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/bitmap.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/marker.dart';
+import 'package:indrive_clone_flutter/src/data/api/ApiKeyGoogle.dart';
 import 'package:indrive_clone_flutter/src/domain/models/PlacemarkData.dart';
 import 'package:indrive_clone_flutter/src/domain/repository/GeolocatorRepository.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 
 class GeolocatorRepositoryImpl implements GeolocatorRepository {
   @override
@@ -92,5 +94,25 @@ class GeolocatorRepositoryImpl implements GeolocatorRepository {
       print("Error: $e");
       return null;
     }
+  }
+
+  @override
+  Future<List<LatLng>> getPolyline(
+      LatLng pickUpLatLng, LatLng destinationLatLng) async {
+    PolylineResult result = await PolylinePoints().getRouteBetweenCoordinates(
+        googleApiKey: API_KEY_GOOGLE,
+        request: PolylineRequest(
+            origin: PointLatLng(pickUpLatLng.latitude, pickUpLatLng.longitude),
+            destination: PointLatLng(
+                destinationLatLng.latitude, destinationLatLng.longitude),
+            mode: TravelMode.driving,
+            wayPoints: [PolylineWayPoint(location: "CDMX, México")]));
+    List<LatLng> polylineCoordinates = [];
+    if (result.points.isNotEmpty) {
+      result.points.forEach((PointLatLng point) {
+        polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+      });
+    }
+    return polylineCoordinates;
   }
 }

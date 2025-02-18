@@ -8,8 +8,9 @@ import 'package:indrive_clone_flutter/src/domain/models/PlacemarkData.dart';
 class ClientMapBookingInfoState extends Equatable {
   final Completer<GoogleMapController>? controller;
   final Position? position;
-  final Map<MarkerId, Marker>? markers;
   final CameraPosition cameraPosition;
+  final Map<MarkerId, Marker> markers;
+  final Map<PolylineId, Polyline> polylines;
   final LatLng? pickUpLatLng;
   final LatLng? destinationLatLng;
   final String pickUpDescription;
@@ -18,24 +19,25 @@ class ClientMapBookingInfoState extends Equatable {
   ClientMapBookingInfoState(
       {this.position,
       this.controller,
-      this.markers = const <MarkerId, Marker>{},
       this.cameraPosition = const CameraPosition(
           target: LatLng(19.424346612813117, -99.08432280105896), zoom: 15.0),
       this.pickUpLatLng,
       this.destinationLatLng,
       this.pickUpDescription = '',
-      this.destinationDescription = ''});
+      this.destinationDescription = '',
+      this.markers = const <MarkerId, Marker>{},
+      this.polylines = const <PolylineId, Polyline>{}});
 
-  ClientMapBookingInfoState copyWith({
-    Position? position,
-    Completer<GoogleMapController>? controller,
-    Map<MarkerId, Marker>? markers,
-    CameraPosition? cameraPosition,
-    LatLng? pickUpLatLng,
-    LatLng? destinationLatLng,
-    String? pickUpDescription,
-    String? destinationDescription,
-  }) {
+  ClientMapBookingInfoState copyWith(
+      {Position? position,
+      Completer<GoogleMapController>? controller,
+      CameraPosition? cameraPosition,
+      LatLng? pickUpLatLng,
+      LatLng? destinationLatLng,
+      String? pickUpDescription,
+      String? destinationDescription,
+      Map<MarkerId, Marker>? markers,
+      Map<PolylineId, Polyline>? polylines}) {
     return ClientMapBookingInfoState(
       position: position ?? this.position,
       markers: markers ?? this.markers,
@@ -46,6 +48,7 @@ class ClientMapBookingInfoState extends Equatable {
       pickUpDescription: pickUpDescription ?? this.pickUpDescription,
       destinationDescription:
           destinationDescription ?? this.destinationDescription,
+      polylines: polylines ?? this.polylines,
     );
   }
 
@@ -59,5 +62,6 @@ class ClientMapBookingInfoState extends Equatable {
         destinationLatLng,
         pickUpDescription,
         destinationDescription,
+        polylines
       ];
 }
