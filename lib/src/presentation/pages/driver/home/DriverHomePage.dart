@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:indrive_clone_flutter/main.dart';
-import 'package:indrive_clone_flutter/src/presentation/pages/client/home/bloc/ClientHomeEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/mapSeeker/ClientMapSeekerPage.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/driver/home/bloc/DriverHomeBloc.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/driver/home/bloc/DriverHomeEvent.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/driver/home/bloc/DriverHomeState.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/driver/mapLocation/DriverMapLocationPage.dart';
+
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/ProfileInfoPage.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/roles/RolesPage.dart';
 
-import 'bloc/ClientHomeBloc.dart';
-import 'bloc/ClientHomeState.dart';
-
-class ClientHomePage extends StatefulWidget {
-  const ClientHomePage({super.key});
+class DriverHomePage extends StatefulWidget {
+  const DriverHomePage({super.key});
 
   @override
-  State<ClientHomePage> createState() => _ClientHomePageState();
+  State<DriverHomePage> createState() => _DriverHomePageState();
 }
 
-class _ClientHomePageState extends State<ClientHomePage> {
+class _DriverHomePageState extends State<DriverHomePage> {
   List<Widget> pageList = <Widget>[
-    ClientMapSeekerPage(),
+    DriverMapLocationPage(),
     ProfileInfoPage(),
     RolesPage()
   ];
@@ -29,12 +30,12 @@ class _ClientHomePageState extends State<ClientHomePage> {
       appBar: AppBar(
         title: Text('Menú'),
       ),
-      body: BlocBuilder<ClientHomeBloc, ClientHomeState>(
+      body: BlocBuilder<DriverHomeBloc, DriverHomeState>(
         builder: (context, state) {
           return pageList[state.pageIndex];
         },
       ),
-      drawer: BlocBuilder<ClientHomeBloc, ClientHomeState>(
+      drawer: BlocBuilder<DriverHomeBloc, DriverHomeState>(
         builder: (context, state) {
           return Drawer(
             child: ListView(
@@ -50,16 +51,16 @@ class _ClientHomePageState extends State<ClientHomePage> {
                         Color.fromARGB(255, 34, 156, 249)
                       ])),
                   child: Text(
-                    'Menú del cliente',
+                    'Menú del Conductor',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 ListTile(
-                  title: Text('Mapa de busqueda'),
+                  title: Text('Mapa de localización'),
                   selected: state.pageIndex == 0,
                   onTap: () {
                     context
-                        .read<ClientHomeBloc>()
+                        .read<DriverHomeBloc>()
                         .add(ChangeDrawerPage(pageIndex: 0));
                     Navigator.pop(context);
                   },
@@ -69,7 +70,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
                   selected: state.pageIndex == 1,
                   onTap: () {
                     context
-                        .read<ClientHomeBloc>()
+                        .read<DriverHomeBloc>()
                         .add(ChangeDrawerPage(pageIndex: 1));
                     Navigator.pop(context);
                   },
@@ -79,7 +80,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
                   selected: state.pageIndex == 2,
                   onTap: () {
                     context
-                        .read<ClientHomeBloc>()
+                        .read<DriverHomeBloc>()
                         .add(ChangeDrawerPage(pageIndex: 2));
                     Navigator.pop(context);
                   },
@@ -87,7 +88,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
                 ListTile(
                   title: Text('Cerrar sesión'),
                   onTap: () {
-                    context.read<ClientHomeBloc>().add(Logout());
+                    context.read<DriverHomeBloc>().add(Logout());
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => MyApp()),

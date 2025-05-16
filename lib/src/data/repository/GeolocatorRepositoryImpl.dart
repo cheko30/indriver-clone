@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_flutter_platform_interface/src/types/bitmap.dart';
-import 'package:google_maps_flutter_platform_interface/src/types/marker.dart';
 import 'package:indrive_clone_flutter/src/data/api/ApiKeyGoogle.dart';
 import 'package:indrive_clone_flutter/src/domain/models/PlacemarkData.dart';
 import 'package:indrive_clone_flutter/src/domain/repository/GeolocatorRepository.dart';
@@ -114,5 +111,12 @@ class GeolocatorRepositoryImpl implements GeolocatorRepository {
       });
     }
     return polylineCoordinates;
+  }
+
+  @override
+  Stream<Position> getPositionStream() {
+    LocationSettings locationSettings = const LocationSettings(
+        accuracy: LocationAccuracy.best, distanceFilter: 1);
+    return Geolocator.getPositionStream(locationSettings: locationSettings);
   }
 }

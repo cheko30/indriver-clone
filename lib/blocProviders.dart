@@ -10,9 +10,13 @@ import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/bloc/
 import 'package:indrive_clone_flutter/src/presentation/pages/client/home/bloc/ClientHomeBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/mapBookingInfo/bloc/ClientMapBookingInfoBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/mapSeeker/bloc/ClientMapSeekerBloc.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/driver/home/bloc/DriverHomeBloc.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/driver/mapLocation/bloc/DriverMapLocationBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/bloc/ProfileInfoBloc.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/info/bloc/ProfileInfoEvent.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/update/bloc/ProfileUpdateBloc.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/roles/bloc/RolesBloc.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/roles/bloc/RolesEvent.dart';
 
 List<BlocProvider> blocProviders = [
   BlocProvider<LoginBloc>(
@@ -23,6 +27,12 @@ List<BlocProvider> blocProviders = [
           RegisterBloc(locator<AuthUseCases>())..add(RegisterInitEvent())),
   BlocProvider<ClientHomeBloc>(
       create: (context) => ClientHomeBloc(locator<AuthUseCases>())),
+  BlocProvider<DriverHomeBloc>(
+    create: (context) => DriverHomeBloc(locator<AuthUseCases>()),
+  ),
+  BlocProvider<RolesBloc>(
+      create: (context) =>
+          RolesBloc(locator<AuthUseCases>())..add(GetRolesList())),
   BlocProvider<ProfileInfoBloc>(
       create: (context) =>
           ProfileInfoBloc(locator<AuthUseCases>())..add(GetUserInfo())),
@@ -34,4 +44,7 @@ List<BlocProvider> blocProviders = [
   BlocProvider<ClientMapBookingInfoBloc>(
       create: (context) =>
           ClientMapBookingInfoBloc(locator<GeolocatorUseCases>())),
+  BlocProvider<DriverMapLocationBloc>(
+      create: (context) =>
+          DriverMapLocationBloc(locator<GeolocatorUseCases>())),
 ];

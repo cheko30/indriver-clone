@@ -23,7 +23,6 @@ class ClientMapSeekerBloc
       Position position = await geolocatorUseCases.findPosition.run();
       add(ChangeMapCameraPosition(
           lat: position.latitude, lng: position.longitude));
-
       emit(state.copyWith(
         position: position,
         //markers: {marker.markerId: marker},

@@ -7,7 +7,9 @@ import 'package:indrive_clone_flutter/src/presentation/pages/auth/login/LoginPag
 import 'package:indrive_clone_flutter/src/presentation/pages/auth/register/RegisterPage.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/home/ClientHomePage.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/client/mapBookingInfo/ClientMapBookingInfoPage.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/driver/home/DriverHomePage.dart';
 import 'package:indrive_clone_flutter/src/presentation/pages/profile/update/ProfileUpdatePage.dart';
+import 'package:indrive_clone_flutter/src/presentation/pages/roles/RolesPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +37,9 @@ class MyApp extends StatelessWidget {
         routes: {
           'login': (BuildContext context) => Loginpage(),
           'register': (BuildContext context) => RegisterPage(),
+          'roles': (BuildContext context) => RolesPage(),
           'client/home': (BuildContext context) => ClientHomePage(),
+          'driver/home': (BuildContext context) => DriverHomePage(),
           'client/map/booking': (BuildContext context) =>
               ClientMapBookingInfoPage(),
           'profile/update': (BuildContext context) => ProfileUpdatePage(),

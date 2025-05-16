@@ -20,6 +20,7 @@ import 'package:indrive_clone_flutter/src/domain/useCases/geolocator/GeolocatorU
 import 'package:indrive_clone_flutter/src/domain/useCases/geolocator/GetMarkerUseCase.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/geolocator/GetPlacemarkDataUseCase.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/geolocator/GetPolylineUseCase.dart';
+import 'package:indrive_clone_flutter/src/domain/useCases/geolocator/GetPositionStreamUseCase.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/users/UpdateUserUseCase.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/users/UsersUseCases.dart';
 import 'package:injectable/injectable.dart';
@@ -77,5 +78,6 @@ abstract class AppModule {
         getMarker: GetMarkerUseCase(geolocatorRepository),
         getPlacemarkData: GetPlacemarkDataUseCase(geolocatorRepository),
         getPolyline: GetPolylineUseCase(geolocatorRepository),
+        getPositionStream: GetPositionStreamUseCase(geolocatorRepository),
       );
 }
