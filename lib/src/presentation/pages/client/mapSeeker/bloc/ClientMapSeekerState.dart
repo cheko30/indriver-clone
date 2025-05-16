@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:indrive_clone_flutter/src/domain/models/PlacemarkData.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 
 class ClientMapSeekerState extends Equatable {
   final Completer<GoogleMapController>? controller;
@@ -15,6 +16,7 @@ class ClientMapSeekerState extends Equatable {
   final LatLng? destinationLatLng;
   final String pickUpDescription;
   final String destinationDescription;
+  final Socket? socket;
 
   ClientMapSeekerState(
       {this.position,
@@ -26,7 +28,8 @@ class ClientMapSeekerState extends Equatable {
       this.pickUpLatLng,
       this.destinationLatLng,
       this.pickUpDescription = '',
-      this.destinationDescription = ''});
+      this.destinationDescription = '',
+      this.socket});
 
   ClientMapSeekerState copyWith({
     Position? position,
@@ -38,6 +41,7 @@ class ClientMapSeekerState extends Equatable {
     LatLng? destinationLatLng,
     String? pickUpDescription,
     String? destinationDescription,
+    Socket? socket,
   }) {
     return ClientMapSeekerState(
       position: position ?? this.position,
@@ -50,6 +54,7 @@ class ClientMapSeekerState extends Equatable {
       pickUpDescription: pickUpDescription ?? this.pickUpDescription,
       destinationDescription:
           destinationDescription ?? this.destinationDescription,
+      socket: socket ?? this.socket,
     );
   }
 
@@ -64,5 +69,6 @@ class ClientMapSeekerState extends Equatable {
         destinationLatLng,
         pickUpDescription,
         destinationDescription,
+        socket,
       ];
 }

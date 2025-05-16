@@ -23,6 +23,7 @@ class DriverMapLocationContent extends StatelessWidget {
           child: Defaultbutton(
             onPressed: () {
               context.read<DriverMapLocationBloc>().add(StopLocation());
+              context.read<DriverMapLocationBloc>().add(DisconnectSocketIO());
             },
             text: 'DETENER LOCALIZACIÓN',
             margin: EdgeInsets.only(left: 50, right: 50, bottom: 50),

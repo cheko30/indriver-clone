@@ -19,6 +19,7 @@ class _DriverMapLocationPageState extends State<DriverMapLocationPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       context.read<DriverMapLocationBloc>().add(DriverMapLocationInitEvent());
+      context.read<DriverMapLocationBloc>().add(ConnectSocketIO());
       context.read<DriverMapLocationBloc>().add(FindPosition());
     });
   }
@@ -28,6 +29,7 @@ class _DriverMapLocationPageState extends State<DriverMapLocationPage> {
     super.dispose();
     SchedulerBinding.instance.addPostFrameCallback((timestamp) {
       if (mounted) {
+        context.read<DriverMapLocationBloc>().add(DisconnectSocketIO());
         context.read<DriverMapLocationBloc>().add(StopLocation());
       }
     });
