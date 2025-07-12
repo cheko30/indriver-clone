@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:indrive_clone_flutter/injection.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/auth/AuthUseCases.dart';
+import 'package:indrive_clone_flutter/src/domain/useCases/drivers-position/DriversPositionUseCases.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/geolocator/GeolocatorUseCases.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/socket/SocketUseCases.dart';
 import 'package:indrive_clone_flutter/src/domain/useCases/users/UsersUseCases.dart';
@@ -47,6 +48,9 @@ List<BlocProvider> blocProviders = [
       create: (context) =>
           ClientMapBookingInfoBloc(locator<GeolocatorUseCases>())),
   BlocProvider<DriverMapLocationBloc>(
-      create: (context) => DriverMapLocationBloc(locator<GeolocatorUseCases>(),
-          locator<SocketUseCases>(), locator<AuthUseCases>())),
+      create: (context) => DriverMapLocationBloc(
+          locator<GeolocatorUseCases>(),
+          locator<SocketUseCases>(),
+          locator<AuthUseCases>(),
+          locator<DriversPositionUseCases>())),
 ];

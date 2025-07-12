@@ -1,5 +1,5 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:indrive_clone_flutter/src/domain/models/DriverPosition.dart';
 
 abstract class DriverMapLocationEvent {}
 
@@ -17,6 +17,16 @@ class ChangeMapCameraPosition extends DriverMapLocationEvent {
 class UpdateLocation extends DriverMapLocationEvent {
   final Position position;
   UpdateLocation({required this.position});
+}
+
+class SaveLocationData extends DriverMapLocationEvent {
+  final DriverPosition driverPosition;
+  SaveLocationData({required this.driverPosition});
+}
+
+class DeleteLocationData extends DriverMapLocationEvent {
+  final int idDriver;
+  DeleteLocationData({required this.idDriver});
 }
 
 class StopLocation extends DriverMapLocationEvent {}
